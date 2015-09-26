@@ -25,7 +25,7 @@ int my_cd (int argc, char *argv[]) {
     int i;
     char *temp, *home;
 
-    printf("prev_dir=%s\n", prev_dir);
+    /*printf("prev_dir=%s\n", prev_dir);*/
 
     if (argc < 2) {
        home = malloc(256*sizeof(char));
@@ -35,7 +35,7 @@ int my_cd (int argc, char *argv[]) {
        strcat(home, get_whoami());
 
        temp = get_current_dir_name();
-       printf("temp=%s\n", temp);
+       /*printf("temp=%s\n", temp);*/
        if((r = chdir((char*)home)) == -1) {
           perror(argv[i]);
        }
@@ -47,12 +47,13 @@ int my_cd (int argc, char *argv[]) {
 
     if (strcmp(argv[1], "-") == 0) {
        if (prev_dir == NULL) {
-          ((void)0);
           // if you want to invoke 'pwd',
-          // you may
+          // you may, otherwise a no-op should
+          // suffice
+          ((void)0);
        } else {
           temp = get_current_dir_name();
-          printf("temp=%s\n", temp);
+          /*printf("temp=%s\n", temp);*/
           if((r = chdir(prev_dir)) == -1) {
              perror(argv[i]);
           }
@@ -60,7 +61,7 @@ int my_cd (int argc, char *argv[]) {
        }
     } else {
        temp = get_current_dir_name();
-       printf("temp=%s\n", temp);
+       /*printf("temp=%s\n", temp);*/
        if((r = chdir(argv[1])) == -1) {
           perror(argv[i]);
        }

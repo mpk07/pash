@@ -1,0 +1,16 @@
+strcat:
+it always assumes that both the strings that are being given as input are null-terminated.
+this is why
+
+char stuff[100];
+strcat(stuff,"hi ");
+strcat(stuff,"there");
+
+fails, but this doesn't?
+
+char stuff[100];
+strcpy(stuff,"hi ");
+strcat(stuff,"there");
+
+To avoid the possible crash in the first case, it's better to either follow the second approach
+or have a stuff[0]='\0'; line before the first strcat() call.

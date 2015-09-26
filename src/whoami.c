@@ -9,19 +9,19 @@
 #include <stdio.h>
 
 int my_whoami(int argc, char **argv) {
-	int ret = EXIT_FAILURE;
-	char *lgn;
-	struct passwd *pw;
+   int ret = EXIT_FAILURE;
+   char *lgn;
+   struct passwd *pw;
 
-	if ((lgn = getlogin()) == NULL || (pw = getpwnam(lgn)) == NULL) {
-		fprintf(stderr, "Get of user information failed.\n"); 
-		exit(1);
-	}
-	
-	if(pw) {
-		printf("%s\n", pw->pw_name);
-	}
+   if ((lgn = getlogin()) == NULL || (pw = getpwnam(lgn)) == NULL) {
+      fprintf(stderr, "Get of user information failed.\n"); 
+      exit(1);
+   }
 
-	ret = EXIT_SUCCESS;
-	return ret;
+   if(pw) {
+      printf("%s\n", pw->pw_name);
+   }
+
+   ret = EXIT_SUCCESS;
+   return ret;
 }

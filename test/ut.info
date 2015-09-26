@@ -1,0 +1,9 @@
+UT for the mv command:
+=====================
++ changing regular filename of one file [DONE]
++ changing name of a pipe [DONE]
++ changing directory to a file. this should fail. [DONE]
++ moving file(s) to/from a directory. check if directory and change the destination argument for rename()
+	- with relative paths [DONE]
+	- with absolute paths [DONE]
+	- move from/to folder by regex [WORKING]

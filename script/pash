@@ -1,0 +1,11 @@
+#!/bin/bash
+
+if [ $# -eq 0 ]; then
+   echo "invoke ./pash"
+elif [ $# -gt 0 ]; then 
+   if [ "$1" = "build" ]; then
+      ./build.sh $2
+   elif [ "$1" = "compile" ]; then
+      ./compile.sh
+   fi
+fi

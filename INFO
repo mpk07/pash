@@ -1,0 +1,31 @@
+INFO:
+Whatever libraries are there in the ./lib folder are the commands supported on pash.
+
+FEATURES: (To do)
++ To search for executables from a directory; for example: grep, wc, find and other such sophisticated commands
+	- this will take care of item number 5.
++ IPC - redirection
++ Reading from a rc file. Populating enviroment variables, PS1 customization etc.
++ [IN PROGRESS] flags for certain commands (uname, etc.) 
++ spawn some commands as new processes. 
+		- for example, if it's cat command and the input is from stdin(0), 
+		  then a ctrl+c will result in pash being terminated instead of the cat command.
+		- or the signal handler must be changed to make sure the action corresponding to a ctrl+c is changed
++ the history command
++ ls command - man 2 getdents()
+
+BUGS & THEIR STATUS:
++[WORKING] stat command not displaying last access time correctly
++[WORKING] timestamp change not working using futimens or utimensat 
+	- tried by sending NULL as the parameter in futimens.
+	- tried by setting the tv_nsec as UTIME_NOW as suggested in man-page. didn't work either.
++ file is not printing anything. make sure it prints an output just like file from /bin does.
+	+ from where is the file collecting data? which meta data structure?
++ [WORKING] mv command
+	- moving files when the parameters are absolute paths
++ [WORKING] Executing command from /bin is not working
++ [WORKING] cd ~
++ cd - is not working; this works only if the dlclose is not called. This dlclose should not be done for chdir and cd if you want to keep track of the previous directory visited. If dlclose is invoked, then the whole library is removed from the virtual address space and therefore the next time cd/chdir is invoked, the prev_dir (even though a static variable) is NULL.
++ [WORKING] (ctrl+c/z) terminates/suspends the pash session. Change the signal handlers so that the pash is not terminated
++ [WORKING] ctrl+d was causing segmentation fault. Check if input is not NULL and if null return with exit(0). This solves the problem
++ auto-complete from all directories in path NOT working

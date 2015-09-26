@@ -50,6 +50,7 @@ success:
 args_fail:
 lstat_fail:
 fail:
+   free(sb);
 	return ret;
 }
 
